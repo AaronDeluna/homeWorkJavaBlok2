@@ -4,8 +4,6 @@ import homework2.ex1.BaggageType;
 import homework2.ex1.Belt;
 import homework2.ex1.Customs;
 
-import java.util.Map;
-
 public class Runner {
     public static void main(String[] args) {
         Belt belt = new Belt();

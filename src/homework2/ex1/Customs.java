@@ -12,10 +12,6 @@ public class Customs {
         Scanner scanner = new Scanner(Runner.class.getClassLoader().getResourceAsStream(fileName));
         scanner.nextLine();
 
-        weightByCategory.put(BaggageType.LIGHT, 0);
-        weightByCategory.put(BaggageType.MEDIUM, 0);
-        weightByCategory.put(BaggageType.HEAVY, 0);
-
         while (scanner.hasNext()) {
             String[] baggageWeightInfo = scanner.nextLine().split(";");
             int weight = Integer.parseInt(baggageWeightInfo[BAGGAGE_WEIGHT]);

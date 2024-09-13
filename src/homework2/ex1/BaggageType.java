@@ -6,13 +6,13 @@ public enum BaggageType {
     HEAVY(10),
     ;
 
-    private int baggage;
+    private int baggageLimit;
 
     BaggageType(int baggage) {
-        this.baggage = baggage;
+        this.baggageLimit = baggage;
     }
 
     public int getBaggageWeight() {
-        return baggage;
+        return baggageLimit;
     }
 }

@@ -4,12 +4,13 @@ import homework2.Runner;
 
 import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class Belt {
     private static final int MAX_BAGGAGE_COUNT_ON_BELT = 10;
     private static final int BAGGAGE_NUMBER = 0;
-    private static final int BAGGAGE_WEIGHT = 1;
-    private ArrayBlockingQueue<Baggage> baggageQueue = new ArrayBlockingQueue<>(MAX_BAGGAGE_COUNT_ON_BELT);
+    private static final int BAGGAGE_WEIGHT_INDEX = 1;
+    private BlockingQueue<Baggage> baggageQueue = new ArrayBlockingQueue<>(MAX_BAGGAGE_COUNT_ON_BELT);
 
     public void addToBelt(String fileName) {
         Scanner scanner = new Scanner(Runner.class.getClassLoader().getResourceAsStream(fileName));
@@ -21,7 +22,7 @@ public class Belt {
             }
             String[] baggageInfo = scanner.nextLine().split(";");
             baggageQueue.add(new Baggage(baggageInfo[BAGGAGE_NUMBER],
-                    Integer.parseInt(baggageInfo[BAGGAGE_WEIGHT])));
+                    Integer.parseInt(baggageInfo[BAGGAGE_WEIGHT_INDEX])));
         }
 
         clearBelt();
