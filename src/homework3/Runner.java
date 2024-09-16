@@ -56,9 +56,9 @@ public class Runner {
 
 
         Review review1 = new Review(1, "отличный товар", 200, LocalDateTime.of(2024, 1, 25, 13, 37));
-        Review review2 = new Review(2, "так себе товар", 200, LocalDateTime.of(2024, 1, 25, 16, 36));
-        Review review4 = new Review(4, "плохой товар", 100, LocalDateTime.of(2024, 1, 25, 13, 37));
-        Review review3 = new Review(3, "плохой товар", 100, LocalDateTime.of(2024, 1, 25, 13, 37));
+        Review review2 = new Review(5, "так себе товар", 300, LocalDateTime.of(2024, 1, 25, 13, 37));
+        Review review4 = new Review(4, "плохой товар", 200, LocalDateTime.of(2024, 1, 25, 13, 37));
+        Review review3 = new Review(2, "плохой товар", 200, LocalDateTime.of(2024, 1, 25, 13, 37));
         ArrayList<Review> reviewsList = new ArrayList<>(List.of(review1, review2, review3, review4));
 
         reviewsList.sort((r1, r2) -> {
