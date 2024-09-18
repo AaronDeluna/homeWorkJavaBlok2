@@ -2,7 +2,7 @@ package homework3.ex5;
 
 import java.time.LocalDateTime;
 
-public class Review {
+public class Review implements Comparable<Review> {
     private int id;
     private String text;
     private int likesCount;
@@ -32,12 +32,25 @@ public class Review {
     }
 
     @Override
+    public int compareTo(Review other) {
+        int likeComparison = Integer.compare(other.getLikesCount(), this.getLikesCount());
+        if (likeComparison != 0) {
+            return likeComparison;
+        }
+        int dateComparison = this.getDate().compareTo(other.getDate());
+        if (dateComparison != 0) {
+            return dateComparison;
+        }
+
+        return Integer.compare(this.getId(), other.getId());
+    }
+
+    @Override
     public String toString() {
-        return "Review{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", likesCount=" + likesCount +
-                ", date=" + date +
-                '}';
+        return "Review{"
+                + "id=" + id
+                + ", text='" + text + '\''
+                + ", likesCount=" + likesCount
+                + ", date=" + date + '}';
     }
 }

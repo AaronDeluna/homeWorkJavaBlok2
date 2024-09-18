@@ -55,24 +55,11 @@ public class Runner {
         System.out.println("--------------");
 
 
-        Review review1 = new Review(1, "отличный товар", 200, LocalDateTime.of(2024, 1, 25, 13, 37));
+        Review review1 = new Review(1, "отличный товар", 400, LocalDateTime.of(2024, 1, 25, 13, 37));
         Review review2 = new Review(5, "так себе товар", 300, LocalDateTime.of(2024, 1, 25, 13, 37));
         Review review4 = new Review(4, "плохой товар", 200, LocalDateTime.of(2024, 1, 25, 13, 37));
         Review review3 = new Review(2, "плохой товар", 200, LocalDateTime.of(2024, 1, 25, 13, 37));
-        ArrayList<Review> reviewsList = new ArrayList<>(List.of(review1, review2, review3, review4));
-
-        reviewsList.sort((r1, r2) -> {
-            int likeComparison = Integer.compare(r2.getLikesCount(), r1.getLikesCount());
-            if (likeComparison != 0) {
-                return likeComparison;
-            }
-            int dateComparison = r1.getDate().compareTo(r2.getDate());
-            if (dateComparison != 0) {
-                return dateComparison;
-            }
-
-            return Integer.compare(r1.getId(), r2.getId());
-        });
+        TreeSet<Review> reviewsList = new TreeSet<>(List.of(review1, review2, review3, review4));
 
         for (Review review : reviewsList) {
             System.out.println(review);
