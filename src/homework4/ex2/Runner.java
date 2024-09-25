@@ -8,8 +8,10 @@ public class Runner {
         List<String> words = new ArrayList<>(List.of("тон", "тополь", "боль", "рой", "стройка"));
 
         long count = words.stream()
-                .filter(word -> word.contains("о"))
-                .count();
+                .mapToLong(word -> word.chars()
+                        .filter(ch -> ch == 'о')
+                        .count())
+                .sum();
 
         System.out.println("Количество слов, с буквой о: " + count);
     }
