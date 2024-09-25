@@ -10,7 +10,8 @@ public class Runner {
         long count = words.stream()
                 .mapToLong(word -> word.chars()
                         .filter(ch -> ch == 'о')
-                        .count())
+                        .count()
+                )
                 .sum();
 
         System.out.println("Количество слов, с буквой о: " + count);
