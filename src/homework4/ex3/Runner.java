@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Runner {
+    private static final int MIN_HEIGHT = 1000;
+    private static final int MAX_SKYSCRAPERS = 3;
     public static void main(String[] args) {
         List<Skyscraper> skyscrapers = new ArrayList<>(List.of(
                 new Skyscraper("Всемирный торговый центр", 541),
@@ -24,7 +24,7 @@ public class Runner {
                 .toList();
 
         correctSkyscrapers.stream()
-                .limit(3)
+                .limit(MAX_SKYSCRAPERS)
                 .forEach(System.out::println);
 
         System.out.println("--------------");
@@ -39,11 +39,11 @@ public class Runner {
 
         System.out.println("Небоскребы выше километра:");
         correctSkyscrapers.stream()
-                .filter(skyscraper -> skyscraper.getHeight() > 1000)
+                .filter(skyscraper -> skyscraper.getHeight() > MIN_HEIGHT)
                 .findAny()
                 .ifPresentOrElse(
                         skyscraper -> correctSkyscrapers.stream()
-                                .filter(s -> s.getHeight() > 1000)
+                                .filter(s -> s.getHeight() > MIN_HEIGHT)
                                 .forEach(System.out::println),
                         () -> System.out.println("Небоскребов выше километра - нет.")
                 );
