@@ -1,24 +1,24 @@
 package homework4.ex1;
 
 public class Car {
-    private String number;
+    private LicensePlate licensePlate;
 
-    public Car(String number) {
-        this.number = number;
+    public Car(LicensePlate licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public String getNumber() {
-        return number;
+    public LicensePlate getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setLicensePlate(LicensePlate licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     @Override
     public String toString() {
         return "Car{"
-                + "number='" + number + '\''
-                + '}';
+                + "licensePlate="
+                + licensePlate + '}';
     }
 }

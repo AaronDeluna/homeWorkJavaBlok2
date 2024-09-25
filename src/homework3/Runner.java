@@ -79,6 +79,6 @@ public class Runner {
         reviewsList.add(review1);
         reviewsList.add(review2);
 
-        reviewsList.forEach(review -> System.out.println(review));
+        reviewsList.forEach(System.out::println);
     }
 }

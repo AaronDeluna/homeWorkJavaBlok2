@@ -1,37 +1,68 @@
 package homework4.ex1;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Runner {
+    private static final int MIN_CAR_INDEX = 1;
+    private static final int MAX_CAR_INDEX_EXCLUSIVE = 51;
+    private static final int GOVERNMENT_NUMBER_MIN = 40;
+    private static final int GOVERNMENT_NUMBER_MAX = 49;
+
+    /**
+     * Данные для машины A
+     */
+    private static final char SERIES_LETTER_CAR_A = 'а';
+    private static final String SERIES_LETTERS_CAR_A = "ан";
+    private static final int REGION_CODE_CAR_A = 799;
+
+    /**
+     * Данные для машины B
+     */
+    private static final char SERIES_LETTER_CAR_B = 'к';
+    private static final String SERIES_LETTERS_CAR_B = "се";
+    private static final int REGION_CODE_CAR_B = 178;
+
     public static void main(String[] args) {
-        //ИСПОЛЬЗОВАНИЕ FOR, WHILE ЗАПРЕЩЕНО В ЭТОЙ ДЗ! Только СТРИМЫ.
-        //Задание №1 - Список спец номеров
-        //Нам необходимо распечатать список номеров, которые принадлежат чиновникам
-        //1. Создать класс машина. У машины есть номер.
-        List<Car> carList1 = Stream
-                .iterate(1, i -> i + 1)
-                .limit(50)
-                .map(i -> new Car(i < 10 ? "a00" + i + "ан799" : "a0" + i + "ан799"))
+        List<Car> carListA = IntStream.range(MIN_CAR_INDEX, MAX_CAR_INDEX_EXCLUSIVE)
+                .mapToObj(index -> createCarWithLicensePlate(SERIES_LETTER_CAR_A, index,
+                        SERIES_LETTERS_CAR_A, REGION_CODE_CAR_A))
                 .toList();
-        List<Car> carList2 = Stream
-                .iterate(1, i -> i + 1)
-                .limit(50)
-                .map(i -> new Car(i < 10 ? "к00" + i + "се178" : "к0" + i + "се178"))
+
+        List<Car> carListB = IntStream.range(MIN_CAR_INDEX, MAX_CAR_INDEX_EXCLUSIVE)
+                .mapToObj(index -> createCarWithLicensePlate(SERIES_LETTER_CAR_B, index,
+                        SERIES_LETTERS_CAR_B, REGION_CODE_CAR_B))
                 .toList();
-        //2. Создать 50 машин с номерами а0[01-50]ан799 (где [01-50] - это все значения от 01 до 50)
-        //3. Создать 50 машин с номерами к0[01-50]се178 (где [01-50] - это все значения от 01 до 50)
-        //4. Объединить машины в единый стрим
-        //5. Оставить в объединенном стриме машины с номерами 04[0-9] - это номера, выдаваемые чиновникам
-        //6. Получить из оставшихся машин номера.
-        //7. Распечатать номера.
-        //ожидаемый результат:
-        // a040ан799
-        // a041ан799
-        // ...
-        // k048се178
-        // k049се178
+
+        Stream<Car> allCarStream = Stream.concat(carListA.stream(), carListB.stream());
+
+        allCarStream.filter(car -> isGovernmentPlateNumber(car))
+                .forEach(car -> System.out.println(car.getLicensePlate()));
+    }
+
+    /**
+     * Проверяет, является ли номерной знак автомобиля государственным.
+     *
+     * @param car объект автомобиля.
+     * @return true, если номерной знак государственный, иначе false.
+     */
+    private static boolean isGovernmentPlateNumber(Car car) {
+        int sereNumber = car.getLicensePlate().getNumber();
+        return sereNumber >= GOVERNMENT_NUMBER_MIN && sereNumber <= GOVERNMENT_NUMBER_MAX;
+    }
+
+    /**
+     * Создает объект автомобиля с заданным номерным знаком.
+     *
+     * @param seriesLetter буква серии номера.
+     * @param index номер автомобиля.
+     * @param seriesLetters буквы серии номера.
+     * @param regionCode код региона.
+     * @return объект автомобиля с указанным номерным знаком.
+     */
+    private static Car createCarWithLicensePlate(char seriesLetter, int index,
+                                                 String seriesLetters, int regionCode) {
+        return new Car(new LicensePlate(seriesLetter, index, seriesLetters, regionCode));
     }
 }
