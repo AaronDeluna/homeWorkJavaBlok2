@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class Runner {
     private static final int MIN_CAR_INDEX = 1;
-    private static final int MAX_CAR_INDEX_EXCLUSIVE = 51;
+    private static final int MAX_CAR_INDEX = 51;
     private static final int GOVERNMENT_NUMBER_MIN = 40;
     private static final int GOVERNMENT_NUMBER_MAX = 49;
 
@@ -25,15 +25,11 @@ public class Runner {
     private static final int REGION_CODE_CAR_B = 178;
 
     public static void main(String[] args) {
-        List<Car> carListA = IntStream.range(MIN_CAR_INDEX, MAX_CAR_INDEX_EXCLUSIVE)
-                .mapToObj(index -> createCarWithLicensePlate(SERIES_LETTER_CAR_A, index,
-                        SERIES_LETTERS_CAR_A, REGION_CODE_CAR_A))
-                .toList();
+        List<Car> carListA = createCarList(SERIES_LETTER_CAR_A,
+                SERIES_LETTERS_CAR_A, REGION_CODE_CAR_A);
 
-        List<Car> carListB = IntStream.range(MIN_CAR_INDEX, MAX_CAR_INDEX_EXCLUSIVE)
-                .mapToObj(index -> createCarWithLicensePlate(SERIES_LETTER_CAR_B, index,
-                        SERIES_LETTERS_CAR_B, REGION_CODE_CAR_B))
-                .toList();
+        List<Car> carListB = createCarList(SERIES_LETTER_CAR_B,
+                SERIES_LETTERS_CAR_B, REGION_CODE_CAR_B);
 
         Stream<Car> allCarStream = Stream.concat(carListA.stream(), carListB.stream());
 
@@ -64,5 +60,20 @@ public class Runner {
     private static Car createCarWithLicensePlate(char seriesLetter, int index,
                                                  String seriesLetters, int regionCode) {
         return new Car(new LicensePlate(seriesLetter, index, seriesLetters, regionCode));
+    }
+
+    /**
+     * Создает список автомобилей с номерами на основе заданных параметров.
+     *
+     * @param seriesLetter  буква серии для номера автомобиля.
+     * @param seriesLetters строка с дополнительными буквами серии.
+     * @param regionCode    код региона для номера.
+     * @return список автомобилей с номерами.
+     */
+    private static List<Car> createCarList(char seriesLetter, String seriesLetters, int regionCode) {
+        return IntStream.range(MIN_CAR_INDEX, MAX_CAR_INDEX)
+                .mapToObj(index -> createCarWithLicensePlate(seriesLetter, index,
+                        seriesLetters, regionCode))
+                .toList();
     }
 }
