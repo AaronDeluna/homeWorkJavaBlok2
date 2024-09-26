@@ -11,10 +11,6 @@ public class Car {
         return licensePlate;
     }
 
-    public void setLicensePlate(LicensePlate licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
     @Override
     public String toString() {
         return "Car{"

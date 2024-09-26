@@ -16,36 +16,8 @@ public class LicensePlate {
         this.regionCode = regionCode;
     }
 
-    public char getSeriesLetter() {
-        return seriesLetter;
-    }
-
-    public void setSeriesLetter(char seriesLetter) {
-        this.seriesLetter = seriesLetter;
-    }
-
     public int getNumber() {
         return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getSeriesLetters() {
-        return seriesLetters;
-    }
-
-    public void setSeriesLetters(String seriesLetters) {
-        this.seriesLetters = seriesLetters;
-    }
-
-    public int getRegionCode() {
-        return regionCode;
-    }
-
-    public void setRegionCode(int regionCode) {
-        this.regionCode = regionCode;
     }
 
     @Override
