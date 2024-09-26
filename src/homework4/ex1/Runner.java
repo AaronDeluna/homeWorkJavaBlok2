@@ -25,11 +25,8 @@ public class Runner {
     private static final int REGION_CODE_B = 178;
 
     public static void main(String[] args) {
-        List<Car> carListA = createCarList(SERIES_LETTER_A,
-                SERIAL_SUFFIX_A, REGION_CODE_A);
-
-        List<Car> carListB = createCarList(SERIES_LETTER_B,
-                SERIAL_SUFFIX_B, REGION_CODE_B);
+        List<Car> carListA = createCarList(SERIES_LETTER_A, SERIAL_SUFFIX_A, REGION_CODE_A);
+        List<Car> carListB = createCarList(SERIES_LETTER_B, SERIAL_SUFFIX_B, REGION_CODE_B);
 
         Stream<Car> allCarStream = Stream.concat(carListA.stream(), carListB.stream());
 
