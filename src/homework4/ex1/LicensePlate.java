@@ -4,10 +4,10 @@ package homework4.ex1;
  * Номерной знак.
  */
 public class LicensePlate {
-    private char seriesLetter;
-    private int number;
-    private String seriesLetters;
-    private int regionCode;
+    private final char seriesLetter;
+    private final int number;
+    private final String seriesLetters;
+    private final int regionCode;
 
     public LicensePlate(char seriesLetter, int number, String seriesLetters, int regionCode) {
         this.seriesLetter = seriesLetter;
