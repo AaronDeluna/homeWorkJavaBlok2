@@ -13,23 +13,23 @@ public class Runner {
     /**
      * Данные для машины A
      */
-    private static final char SERIES_LETTER_CAR_A = 'а';
-    private static final String SERIES_LETTERS_CAR_A = "ан";
-    private static final int REGION_CODE_CAR_A = 799;
+    private static final char SERIES_LETTER_A = 'а';
+    private static final String SERIAL_SUFFIX_A = "ан";
+    private static final int REGION_CODE_A = 799;
 
     /**
      * Данные для машины B
      */
-    private static final char SERIES_LETTER_CAR_B = 'к';
-    private static final String SERIES_LETTERS_CAR_B = "се";
-    private static final int REGION_CODE_CAR_B = 178;
+    private static final char SERIES_LETTER_B = 'к';
+    private static final String SERIAL_SUFFIX_B = "се";
+    private static final int REGION_CODE_B = 178;
 
     public static void main(String[] args) {
-        List<Car> carListA = createCarList(SERIES_LETTER_CAR_A,
-                SERIES_LETTERS_CAR_A, REGION_CODE_CAR_A);
+        List<Car> carListA = createCarList(SERIES_LETTER_A,
+                SERIAL_SUFFIX_A, REGION_CODE_A);
 
-        List<Car> carListB = createCarList(SERIES_LETTER_CAR_B,
-                SERIES_LETTERS_CAR_B, REGION_CODE_CAR_B);
+        List<Car> carListB = createCarList(SERIES_LETTER_B,
+                SERIAL_SUFFIX_B, REGION_CODE_B);
 
         Stream<Car> allCarStream = Stream.concat(carListA.stream(), carListB.stream());
 
