@@ -8,8 +8,7 @@ import java.math.BigDecimal;
 public class Runner {
     public static void main(String[] args) throws NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
-        BigDecimal bankMoney = new BigDecimal(1500);
-        Bank bank = createBank(bankMoney);
+        Bank bank = createBank(BigDecimal.valueOf(1500));
         Thief thief = createThief();
 
         stealMoney(thief, bank);
