@@ -8,6 +8,7 @@ import java.util.Optional;
 public class Runner {
     private static final int MIN_HEIGHT = 1000;
     private static final int MAX_SKYSCRAPERS = 3;
+
     public static void main(String[] args) {
         List<Skyscraper> skyscrapers = new ArrayList<>(List.of(
                 new Skyscraper("Всемирный торговый центр", 541),
@@ -15,8 +16,8 @@ public class Runner {
                 new Skyscraper("Бурдж-Халифа", 828),
                 new Skyscraper("Международный финансовый центр Пинань", 599),
                 new Skyscraper("Абрадж аль-Бейт", 601),
-                new Skyscraper("Всемирный центр Лотте", 555),
-                new Skyscraper("Бурдж-Халифа", 828)
+                new Skyscraper("Всемирный центр Лотте", 1004),
+                new Skyscraper("Бурдж-Халифа", 1002)
         ));
 
         List<Skyscraper> correctSkyscrapers = skyscrapers.stream()
