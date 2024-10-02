@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 public class Runner {
+    private static final String STEAL_MONEY_METHOD_NAME = "stealMoney";
     public static void main(String[] args) throws NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
         Bank bank = createBank(BigDecimal.valueOf(1500));
@@ -26,7 +27,7 @@ public class Runner {
      */
     public static void stealMoney(Thief thief, Bank bank) throws InvocationTargetException,
             IllegalAccessException, NoSuchMethodException {
-        Method stealMoney = Thief.class.getDeclaredMethod("stealMoney", Bank.class);
+        Method stealMoney = Thief.class.getDeclaredMethod(STEAL_MONEY_METHOD_NAME, Bank.class);
         stealMoney.setAccessible(true);
         stealMoney.invoke(thief, bank);
     }
