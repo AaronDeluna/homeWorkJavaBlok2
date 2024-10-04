@@ -3,6 +3,7 @@ package homework5;
 import java.math.BigDecimal;
 
 public class Bank {
+
     private BigDecimal money;
 
     private Bank(BigDecimal money) {

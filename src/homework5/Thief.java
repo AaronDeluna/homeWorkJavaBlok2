@@ -7,6 +7,7 @@ import java.math.BigDecimal;
  * Вор.
  */
 public class Thief {
+
     private static final String MONEY_FIELD_NAME = "money";
     private BigDecimal money;
 

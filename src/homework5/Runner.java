@@ -6,7 +6,9 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 public class Runner {
+
     private static final String STEAL_MONEY_METHOD_NAME = "stealMoney";
+
     public static void main(String[] args) throws NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
         Bank bank = createBank(BigDecimal.valueOf(1500));
