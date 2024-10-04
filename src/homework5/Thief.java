@@ -19,7 +19,7 @@ public class Thief {
         Field field = bankClass.getDeclaredField(MONEY_FIELD_NAME);
         field.setAccessible(true);
         Object bankMoney = field.get(bank);
-        this.money = (BigDecimal) bankMoney;
+        this.money.add((BigDecimal) bankMoney);
         field.set(bank, BigDecimal.ZERO);
     }
 
